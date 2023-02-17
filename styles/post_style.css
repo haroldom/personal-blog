@@ -1,0 +1,135 @@
+html{
+    font-size: 62.5%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  Body: 20px 
+    h3: 28px
+    h2: 36px
+    h1: 44px
+*/
+
+h1{
+    font-size: 4.4rem;
+}
+
+body{
+    font-size: 2rem;
+    background-color: #FBFBFB;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #000000;
+
+}
+
+a{
+    color: #000000;
+    text-decoration: none;
+}
+/* CSS -> HEADER */
+header{
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
+.main{
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(250, 250, 250, 0.861);
+    backdrop-filter: blur(.6rem);
+    padding: 20px max(5%,2.4rem);
+    width: 100%;
+    box-shadow: 0px 51px 52px -32px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e7e7e7;
+}
+.social-media{
+    display: flex;
+    align-items: center;
+}
+
+.social-media a{
+    font-size: 2.5rem;
+    margin: 0 1rem;
+}
+
+nav h1{
+    line-height: 4rem;
+    color: #000000 !important;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+/* Content CSS */
+.main-content{
+    overflow-wrap: break-word;
+    width: 100%;
+    padding: 1.6rem 2.4rem;
+}
+
+.main-content div{
+    display: flex;
+    justify-content: center;
+    margin: 4rem 0;
+}
+.main-content img{
+    max-width: 100%;
+    border-radius: .5rem;
+}
+
+.main-content .gif-1{
+    width: 100%;
+}
+.main-content .gif-2{
+    width: 70%;
+}
+
+.vertical{
+    width: 50% !important;
+}
+
+.main-content pre{
+    border-radius: .7rem;
+}
+
+.main-content h2{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.main-content blockquote{
+    border-left: .5rem solid #D6D6D7;
+    padding-left: 2rem;
+    margin: 2rem 0;
+}
+
+.main-content p{
+    margin: 2rem 0;
+}
+p code{
+    background-color: #E5E5E5;
+    font-family: 'SF Mono';
+    font-size: 1.6rem;
+    padding: .2rem .6rem;
+    border-radius: .3rem;
+}
+
+@media (min-width: 768px){
+    .main-content{
+        max-width: 89.6rem;
+        padding: 1.6rem 3.2rem
+    }
+}

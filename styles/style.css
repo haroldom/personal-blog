@@ -1,0 +1,222 @@
+html{
+    font-size: 62.5%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+/*  Body: 20px 
+    h3: 28px
+    h2: 36px
+    h1: 44px
+*/
+
+h1{
+    font-size: 4.4rem;
+}
+
+body{
+    font-size: 2rem;
+    background-color: #FBFBFB;
+}
+
+a{
+    text-decoration: none;
+}
+/* CSS -> HEADER */
+header{
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
+.main{
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(250, 250, 250, 0.861);
+    backdrop-filter: blur(.6rem);
+    padding: 20px max(5%,2.4rem);
+    width: 100%;
+    box-shadow: 0px 51px 52px -32px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e7e7e7;
+}
+
+nav h1{
+    line-height: 4rem;
+    color: #000000 !important;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+.social-media{
+    display: flex;
+    align-items: center;
+}
+
+.social-media a{
+    font-size: 2.5rem;
+    margin: 0 1rem;
+}
+
+.social-media a .fa-instagram{
+    display: none;
+    position: absolute;
+}
+/* Content CSS */
+.main-content{
+    width: 100%;
+    overflow-wrap: break-word;
+    padding: 1.6rem 2.4rem;
+}
+/* Info Content */
+.main-content-info{
+    margin-top: 4rem;
+}
+
+.main-content-info p{
+    margin-top: 2.4rem;
+}
+
+.main-content-info a{
+    font-weight: 500;
+    position: relative;
+    text-decoration: underline .3rem;
+    text-underline-offset: 0.8rem;   
+    color: #14213D;
+}
+
+
+.main-content-posts{
+    margin-top: 1rem;
+}
+
+/* Notes design */
+.note{
+    margin: 2rem 0;
+    display: flex;
+    border: 0.1rem solid #415859;
+    border-radius: 5px;
+    background-color: #A8DADC;
+    padding: 1.6rem;
+    font-size: 1.8rem;
+    transition: box-shadow .3s;
+}
+.note:hover{
+    box-shadow: -1px 17px 36px -12px rgba(0,0,0,0.44);
+    -webkit-box-shadow: -1px 17px 36px -12px rgba(0,0,0,0.44);
+    -moz-box-shadow: -1px 17px 36px -12px rgba(0,0,0,0.44);
+}
+.note-icon{
+    margin-top: 0.3rem;
+    margin-right: 0.7rem;
+    font-size: 2rem;
+}
+
+/* Posts cards design*/
+.posts-container{
+    margin-top: 5rem;
+}
+
+.post-card{
+    border-radius: .5rem;
+    padding: 1rem;
+    display: grid;
+    width: 100%;
+    min-height: 31.6rem;
+    background-color: #F7F7F7;
+    border: 1px solid #e7e7e7;
+    margin: 2.8rem 0;
+    transition: box-shadow .3s;
+}
+
+
+
+.post-card-info{
+    margin-top: 1.6rem;
+}
+
+.post-card .topic{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #FEAE01;
+}
+.post-card .date{
+    font-size: 1.6rem;
+    color: #656565;
+}
+
+.post-card img{
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+@media (min-width: 768px){
+    .main-content{
+        max-width: 89.6rem;
+        padding: 1.6rem 3.2rem
+    }
+    /* Post card CSS */
+    .post-card{
+        border-radius: .5rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: .3fr .7fr;
+        width: 100%;
+        min-height: 17rem;
+    }
+    .post-card:hover{
+        box-shadow: -1px 1px 45px 15px rgba(0,0,0,0.18);
+        -webkit-box-shadow: -1px 1px 45px 15px rgba(0,0,0,0.18);
+        -moz-box-shadow: -1px 1px 45px 15px rgba(0,0,0,0.18);
+    }
+    .post-card img{
+        max-width: 100%;
+        height: 13.8rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+    .post-card-info{
+        height: 100%;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 3.2rem;
+    }
+    .post-card-info h3{
+        margin-top: -2rem;
+    }
+    /* Underline of the link */
+    .main-content-info a{
+    text-decoration: none;
+    }
+    .main-content-info a:after{
+        content: "";
+        position: absolute;
+        background-color: #14213D;
+        height: .3rem;
+        width: 0;
+        left: 0;
+        bottom: -1rem;
+        transition: width 0.3s;
+    }
+
+    .main-content-info a:hover:after{
+        width: 100%;
+    }
+}

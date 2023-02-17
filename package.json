@@ -1,0 +1,17 @@
+{
+  "name": "haroldspage",
+  "version": "1.0.0",
+  "description": "Personal web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "blog",
+    "node",
+    "python"
+  ],
+  "author": "Harold Ormeño <h4roldsmail@gmail.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../styles/post_style.css">
+    <link rel="stylesheet" href="../styles/prism-gruvbox-dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <title>Harold Ormeño</title>
+
+    <title>Harold Ormeño</title>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <nav>
+                <h1><a href="../index.html">Harold Ormeño</a></h1>
+                <div class="social-media">
+                    <a target="_blank" href="https://twitter.com/sebaasom"><i class="fa-brands fa-twitter"></i></a>
+                    <a target="_blank" href="https://github.com/haroldom"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </nav>
+        </header>
+        <div class="main-content">  
+            <h2>Prototype</h2>
+            <p>Tranquilo, yo tampoco lo entendí a la primera, pero luego de leer por mucho rato te lo puedo explicar en idioma humano. Además, trataré de codificar en español, sé que no es buena práctica, pero para que lo podamos entender juntos, funciona para mí 🐱‍👤</p>
+            <p>Probablemente uno de los conceptos más temidos dentro de JavaScript pero a su vez, te prometo que luego de esta parte todo tendrá mucho más sentido.</p>
+            <h2 id="🔤-¿qué-es-prototype">🔤 <strong>¿Qué es prototype?</strong></h2>
+            <p>En JavaScript, un prototipo es un objeto <strong>que sirve como plantilla para crear otros objetos</strong>. Cada objeto de JavaScript tiene un prototipo, que es otro objeto del que las futuras instancias hereda propiedades y métodos.</p>
+            <p>Aún no queda claro, ¿Cierto? Respira porque verás la matrix y tendrás una revelación divina, sígueme el hilo.</p>
+            <div><img class="gif-2" src="https://data.whicdn.com/images/206164113/original.gif" alt="https://data.whicdn.com/images/206164113/original.gif"></div>
+            <p>Ya sabemos cómo crear un objeto cierto? Para continuar vamos a realizar algunos ejemplos y usaré pokemones, ¿Por qué? Porque son geniales.</p>
+            <p>Bien, sabemos que podemos declarar un objeto vacío, y posteriormente, poder asignarles ciertos valores con ayuda del <code>.</code> </p>
+            <p>Veamos como se vería esto en código.</p>
+            <pre><code class="language-js">let pokemon = {}
+pokemon.nombre = &#39;Pikachu&#39;
+pokemon.vida = 100</code></pre>
+            <blockquote>
+            <p>Nuestro pokemon ha de necesitar un nombre y vida para existir:)</p>
+            </blockquote>
+            <p>Pero claro, un pokemon también tiene ciertas acciones, vamos añadirlas al pokemon también con ayuda del punto.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ozbke29ychits8i2s8me.png" alt="Source 2"></div>
+            <p>Listo, ahora tenemos un objeto creado con propiedades y métodos (<em>Entendemos por métodos a las funciones declaradas dentro de un objeto</em>). </p>
+            <p>Pero y ¿Ahora qué? Pikachu no es el único pokemon en toda la serie, existen otros muchos más, y para lograr ello, lo más óptimo sería crear una función constructora para <strong>a partir de esta, crear nuevas instancias, nuevos objetos</strong>, nuevos pokemones.</p>
+            <p>Pero oye, ¿Función constructora? ¿Nuevas instancias? No entiendo.</p>
+            <p>Tranquilo pequeño gran programador, sigue leyendo.</p>
+            <p>Una <strong>función constructora</strong> no es nada más que una función que nos ayudará a crear nuevos objetos. Y una <strong>instancia</strong> no es más que el objeto que vamos a crear a partir de esta función constructora.</p>
+            <p>¿Lo tienes? Sigamos.</p>
+            <div><img class="gif-2" src="https://media0.giphy.com/media/l3YSeNYycfpIvPokM/giphy.gif?cid=ecf05e47wpt501mpleu95sb6teuedw32nurgo1axvldvmy5v&rid=giphy.gif&ct=g" alt="https://media0.giphy.com/media/l3YSeNYycfpIvPokM/giphy.gif?cid=ecf05e47wpt501mpleu95sb6teuedw32nurgo1axvldvmy5v&amp;rid=giphy.gif&amp;ct=g"></div>
+            <p>A continuación entraremos ya en el tema, pero desde un punto básico y estaremos mejorando nuestro código a medida que avancemos, hasta llegar  al contenido de <code>__proto__</code> vs <code>prototype</code>.</p>
+            <p>Nos quedamos en crear nuestra función constructora, ¿Cómo se vería esto en código?</p>
+            <p>Crearemos una función <code>Pokemon</code>, tendrá como parámetro <em>nombre</em>, el cual la pasaremos como valor a la propiedad nombre <code>(pokemon.nombre)</code> de nuestra futura instancia. El resto del código prácticamente es lo mismo:)</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iop32zn5mcwnuvv8ld9k.png" alt="source 3"></div>
+            <p>Felicidades, ya tenemos un constructor para crear pokemones! Ahora, toca crearlos 🤔 Para ello usaremos el constructor que acabamos de desarrollar 💡</p>
+            <p>Veamos que obtenemos en la consola si imprimimos los valores de dos instancias a partir de nuestra función Pokemon.</p>
+            <div><img class="gif-1" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e44lydbh00713thu6wdh.gif" alt="Visualizer 1"></div>
+            <p>Obtenemos dos objetos muy parecidos, salvo por la diferencia en el valor de <code>“nombre”</code>, pero mantienen el resto de propiedades iguales, incluyendo los métodos. </p>
+            <p>Si te das cuenta, al final de ambos puedes ver <code>[[Prototype]]</code>, su significado lo veremos más adelante.</p>
+            <p>Pero pensemos un poco, en Pokemon no solo tenemos 2 pokemones, tenemos cientos, miles, y si creamos a todos ellos, las funciones caminar y salir se van a asignar en diferentes espacios de memoria pero al final van hacer lo mismo.</p>
+            <p>Puedes ver lo que ocurre gráficamente a continuación. Cada pokemon asignará sus métodos en diferentes espacios en memoria, y si tenemos miles, puedes darte la idea de lo <strong>colapsada que estará nuestro memory heap</strong>.</p>
+            <div><img class="gif-1" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTE2MWIxYWVmNDI4ODNjOTgxZGE5YzNkOWZjZWM5NzUyMjg1NTFiOSZjdD1n/VX0DaCmNMyH2haT1vC/giphy.gif" alt="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTE2MWIxYWVmNDI4ODNjOTgxZGE5YzNkOWZjZWM5NzUyMjg1NTFiOSZjdD1n/VX0DaCmNMyH2haT1vC/giphy.gif"></div>
+            <p>Veamos como podemos solucionar esto.</p>
+            <p><strong>El problema está en que se están recreando las funciones de cada pokemon</strong>, qué pasaría si en vez de asignarlas a cada pokemon, hacemos que estos hagan referencia a un objeto que contenga todas estas funciones.</p>
+            <p>Pero, no habría conflictos? Yo también me pregunté lo mismo, pero no es algo que deberíamos preocuparnos, pues gracias a <code>“this”</code>, estaremos haciendo referencia a cada instancia posible y no estará referenciando a un solo pokémon.</p>
+            <p>Veamos como se vería esto en código.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6sjppa2q3i11hgfwm4qk.png" alt="Source 4"></div>
+            <p><strong>¿Qué hicimos?</strong> Bueno, creamos un objeto <code>pokemonMethods</code> y le asignamos dos funciones, ahora dentro de nuestra función Pokemon, solo hacemos referencia a cada una de estas funciones para agregarlas como métodos de nuestra futura instancia.</p>
+            <p><strong>Excelente!</strong> 😼 Ahora con este código, hemos dado solución a ese problema. Al ejecutar el programa, se creará <code>pokemonMethods</code> solo una vez en memoria, y luego cada que creamos un nuevo pokemon, lo que estamos haciendo es una referencia a ese objeto de métodos en vez de recrearlos por cada uno.</p>
+            <p>Pero puedes pensar en algún problema que estamos teniendo actualmente en el código? Por si no te das cuenta, si tuviéramos muchos más métodos dentro de <code>pokemonMethods</code>, tendríamos que hacer una referencia dentro de nuestra función <code>Pokemon</code> por cada uno, y no sería algo muy óptimo, y la verdad que da mucha pereza. 😴</p>
+            <p>Así que sí, vamos a mejorar nuestro código.</p>
+            <hr>
+            <h2 id="🔨-objectcreate">🔨 Object.create()</h2>
+            <p>Y esto? Querido amigo, este pedazo de código será la salvación.</p>
+            <p>Lo que queremos hacer es que nuestra función constructora Pokemon, siempre pueda hacer referencia a sus métodos que están dentro de pokemonMethods.</p>
+            <p>Y precisamente algo parecido es lo que hace nuestro <code>object.create</code></p>
+            <p>Lo que hace esta función <strong>es en sí devolvernos un nuevo objeto.</strong> Y su trabajo es, darle la capacidad a ese nuevo objeto de poder acceder a propiedades y métodos de un “objeto padre”.</p>
+            <p>Puedes ver cómo se realiza la búsqueda de los valores a continuación.</p>
+            <div><img class="gif-1" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjM4OTk4NjQyM2M5OGNlN2E1YzFmNzdhNjMyYTc0ZTY3YjhhNWFjMiZjdD1n/Gjv1oA8HQjQxn5nE9t/giphy.gif" alt="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjM4OTk4NjQyM2M5OGNlN2E1YzFmNzdhNjMyYTc0ZTY3YjhhNWFjMiZjdD1n/Gjv1oA8HQjQxn5nE9t/giphy.gif"></div>
+            <p>Lo tienes más claro? La búsqueda de tal propiedad o método iniciará en el objeto en sí, y luego si no la encuentra, pasará a buscarla dentro del objeto que pasamos como argumento en <code>Object.create()</code></p>
+            <p>Bellísimo, no es así? Ahora veamos cómo se vería esto dentro de nuestro ejemplo con pokemones.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/223grs94zxvgrebfuqfq.png" alt="Source 5"></div>
+            <p>Si pruebas el código verás que obtendrás los mismos resultados, nuestros pokemones instanciados tendrá la posibilidad de acceder a sus métodos! 😉</p>
+            <p>Aquí es donde empezará lo genial, tan genial como pueden llegar a ser los patrones de creación de instancias en JS. Listo? Sigamos. 💪🏻</p>
+            <p>Vamos a volvernos mucho más pros 🎩💎 </p>
+            <p>El hecho de que declaremos los métodos fuera de nuestra función general que sería <code>Pokemon</code>, no se ve bien verdad?, sería mucho más elegante si lo hacemos dentro de algo que tenga relación con este.</p>
+            <p>Aquí es donde entra en juego el prototype en JS.</p>
+            <div><img class="gif-2" src="https://media1.giphy.com/media/3zz2ihAv6L1HEE1U4G/giphy.gif?cid=ecf05e47ovafdzmmxmuouuevcydysr7vahvlwa88jf8a30t3&rid=giphy.gif&ct=g" alt="https://media1.giphy.com/media/3zz2ihAv6L1HEE1U4G/giphy.gif?cid=ecf05e47ovafdzmmxmuouuevcydysr7vahvlwa88jf8a30t3&amp;rid=giphy.gif&amp;ct=g"></div>
+            <p>Vi muchos recursos y realmente se enriendan mucho para un concepto tan sencillo, así que relájate.</p>
+            <p>Vamos a ir construyendo este concepto.</p>
+            <p>Lo único que es prototype en JS es una propiedad en una función. ¿Lo tienes?</p>
+            <p>Todas las funciones tienen un prototype. ¿Raro no? </p>
+            <p>Vamos a imprimir el valor de prototype en una función vacía.</p>
+            <p>Lo que nos devuelve la consola es un objeto con una propiedad “<code>constructor</code>” dentro de él.</p>
+            <pre><code class="language-js">function randomFn(){}
+console.log(randomFn.prototype)
+// {Constructor ƒ}
+// -&gt; constructor : ƒ randomFn()
+// -&gt; [[Prototype]]: Object</code></pre>
+            <p>Y ese el concepto con el que te debes de quedar, si te preguntan en una entrevista, ¿Qué es prototype? Puedes responder: Es una propiedad que tienen todas las funciones que hace referencia a un objeto 🤖</p>
+            <p>Perfecto! Pero qué se supone que voy hacer con eso? 🤨 Pues aquí viene lo mágico. Al tenerla todas las funciones en JS, podemos usar esa propiedad para administrar ciertos valores. Y qué mejor que usarla para evitar administrar nuestros métodos de los pokemones fuera de ese contexto de <code>Pokemon</code> pues poca relación mantenía con el mismo.</p>
+            <p>¿Cómo haríamos esto? Observemos a continuación.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xzf9xyljsxtcv46slh0x.png" alt="Source 6"></div>
+            <p>Almacenamos nuestros métodos dentro de <code>Pokemon.prototype</code> y pasaremos en el object.create la referencia al <code>prototype de Pokemon</code> <code>(Pokemon.prototype)</code> para que delegue la búsqueda hacia allí.</p>
+            <p>Aún no te quedó claro? No te preocupes, mira a prototype como una cajita, y podemos almacenar en ella lo queramos, pero mantendrá siempre ese vínculo con nuestro objeto dueño del prototype, en este caso Pokemon, y que estarán disponibles para futuras instancias. Veamos la siguiente representación</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/su5gdbbspfa3fw2g2d2w.png" alt="Source 7"></div>
+            <p>La lógica de búsqueda de propiedades será la misma.</p>
+            <p>Iniciará buscando en la instancia que vayamos a crear, luego en la función Pokemon y luego pasará a buscar dentro del <code>Pokemon.prototype</code></p>
+            <p>A que sí era sencillo 🤗</p>
+            <p>Hagamos una pequeña recapitulación de lo que hemos aprendido hasta el momento. Sabemos cómo declarar una <strong>función constructora</strong> (<em>Función que devuelve un objeto</em>), además sabemos <strong>cómo añadir métodos al prototype de nuestra función constructora</strong>, y por último pero menos importante, <strong>aprendimos a usar object.create</strong> para delegar la búsqueda fallida al prototype de nuestra función constructora 😮 </p>
+            <p>Su único propósito? Compartir ciertos métodos en todas las futuras instancias de un constructor en particular 🌟</p>
+            <p>Hemos tenido un magnífico avance, no es así? Sugiero te tomes una pequeña pausa para digerir lo anterior para continuar. Listo?</p>
+            <h2 id="🔑-new-keyword">🔑 New keyword</h2>
+            <p>Como te dije, aquí no dejaremos de mejorar nuestro código, y sí, sonaré molesto pero aún podemos hacerlo, pues debería haber una forma más fácil de hacer todo este proceso de crear nuevas instancias y bla bla bla, verdad? Echemos un vistazo a esta parte del código.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mdfqrwqcog55xxsap2z7.png" alt="Source 8"></div>
+            <p>Esas dos líneas son fundamentales para nuestra función constructora, y probablemente ya hayas escuchado sobre la palabra clave <code>new</code>, pues ahora veremos cómo podemos implementarla acá para optimizar todo.</p>
+            <p>La forma en que funciona es la siguiente: Puedes ver a new como decir, crear una nueva instancia de → Pokemon (Función constructora).</p>
+            <pre><code class="language-js">const Pikachu = new Pokemon(&#39;Pikachu&#39;);</code></pre>
+            <p>Y ahora bien, ¿Cuál es la diferencia cuando usamos new? Pues si en esta también podemos crear instancias. Atento y mira a continuación</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0iz9843r7bxrj6p5q901.png" alt="Source 9"></div>
+            <p>Lo que sucede es que detrás de cámaras, <strong>JS creará un objeto this</strong>, y le pasará como object.create al prototype de ese constructor actual. Ahora tú como desarrollador, para añadir métodos o propiedades, tendrás que hacer referencia a ese objeto this. Finalmente JS implícitamente hará un return de ese objeto this.</p>
+            <p>Increíble no es así? Veamos como se vería aplicado en nuestro objeto con pokemones.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/06c4dd550yr6kxv3tfgl.png" alt="Source 10"></div>
+            <strong>Oh là là,</strong> mucho más elegante cierto? 🎩🍷</p>
+            <p>Recuerda que cuando usamos new, ya no es necesario crear ese objeto this ni devolverlo en el return, todo lo hace JS implícitamente.</p>
+            <p>Ahora sí! Lo que estábamos esperando, veamos el verdaderooo</p>
+            <h2 id="🥊-__proto__-o-prototype-vs-prototype">🥊 <code>__proto__</code> o [[Prototype]] vs prototype</h2>
+            <p>Apuesto a que has visto <code>__proto__</code> por algún lado y no tenías ni idea de lo que era cierto?. Mira el siguiente pedazo de código. Que por cierto <code>__proto__</code> se le conoce también como <strong>dunder proto</strong></p>
+            <p>Vamos a ver todo lo que nos imprime la consola si imprimimos el valor de una instancia con nuestra función constructora Pokemon.</p>
+            <pre><code class="language-js">const Pikachu = new PokemonConNew(&#39;Pikachu&#39;)
+console.log(Pikachu)</code></pre>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/klixjcc0ze4kes6uetar.png" alt="Source 11"></div>
+            <p>A mí me aparece [[Prototype]] en vez de <code>__proto__</code> porque tengo un tema instalado en mi devtools.</p>
+            <p>Se ve raro y feo, ¿No es así? Pero veamos cómo va indentado este output. Vemos que el primer <code>__proto__</code> es un objeto, y es así.</p>
+            <p>En realidad cada <code>__proto__</code> hará referencia al prototipo que se le fue asignado a cierta instancia cuando fue creada. Es por ello que vemos cómo Pikachu, su última instancia fue la que hicimos al constructor <code>PokemonConNew()</code></p>
+            <p>Pero oh! Esa no era la única instancia, si vemos, tenemos otro <code>__proto__</code> que también es otro objeto, pero si buscamos de dónde vino esa instancia (<em>Buscando la propiedad <code>constructor</code></em>), nos daremos cuenta que viene de una función constructora llamada Object 😮❕</p>
+            <p>Y luego tenemos otro <code>__proto__</code> pero con tres puntos, y si lo abres, te encontrarás con otro <code>__proto__</code>, y así hasta llegar a null.</p>
+            <p>Una revelación? Object.prototype es el prototipo de todos los objetos en JS. Y sí esto lo conocemos como cadena de prototipos, mira esto!</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bud6wvbykg738ite7on6.png" alt="Source 12"></div>
+            <p>Dentro de JavaScript tenemos prototipos muy complejos como el de los Arrays (<em>De ahí vienen todos los métodos para manipularlos</em>), para funciones, fechas, etc. Pero todos estos derivan del Object.prototype</p>
+            <p>Así que sí, cuando busquemos cierta propiedad en una instancia, se empezará por la instancia en sí, luego por el primer <code>__proto__</code>, luego por el <code>__proto__</code> del mismo, así hasta llegar a Object.prototype, cuando llegue a este y necesite ir a su <code>__proto__</code>, devolverá <code>undefined</code>, pues el <code>__proto__</code> de Object.prototype es <code>null</code>.</p>
+            <p>Felicidades, ahora ya sabes de dónde viene el undefined 🤗</p>
+            <div><img class="gif-2" src="https://media4.giphy.com/media/l41Ys4Fb5r8hcPhde/giphy.gif?cid=ecf05e47oyscp5we9t8g2jk8adzzvsb18pyaigqzwp37pecj&rid=giphy.gif&ct=g" alt="https://media4.giphy.com/media/l41Ys4Fb5r8hcPhde/giphy.gif?cid=ecf05e47oyscp5we9t8g2jk8adzzvsb18pyaigqzwp37pecj&amp;rid=giphy.gif&amp;ct=g"></div>
+            <h2 id="😮-revelación-del-año">😮 Revelación del Año</h2>
+            <p>Tanto así? Probablemente ya sepas de esto pero si no, te va a fascinar.</p>
+            <p>Quizás ya has escuchado sobre cómo crear un Array vacío, cierto?</p>
+            <pre><code class="language-js">const arrayVacio = []</code></pre>
+            <p>Pero qué pasaría si te digo que esos dos corchetes no son en realidad lo que parece. </p>
+            <p>Pues esos corchetes en realidad son..</p>
+            <pre><code class="language-js">const arrayVacio = new Array()</code></pre>
+            <p>Azúcar sintáctica. De qué?</p>
+            <p>Sí! De una nueva instancia de un constructor.</p>
+            <div><img class="gif-2 vertical" src="https://media2.giphy.com/media/VPevIZhmlNOms/giphy.webp?cid=ecf05e47nvzqzvvxjp3a8pykk29nj91u1n7lb6s9s4zbrlv9&rid=giphy.webp&ct=g" alt="https://media2.giphy.com/media/VPevIZhmlNOms/giphy.webp?cid=ecf05e47nvzqzvvxjp3a8pykk29nj91u1n7lb6s9s4zbrlv9&amp;rid=giphy.webp&amp;ct=g"></div>
+            <p>Alguna vez te preguntaste, de dónde vienen todos esos métodos que nos permiten operar y trabajar a gusto con arrays en JS?. Creo que ya puedes inferirlo. Efectivamente! Proviene del prototype de esa función constructora Array(). Veámoslo.</p>
+            <div><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vwdm7x0h2ljqvbz8hgg8.png" alt="Source 13"></div>
+            <p>Ahora te traigo además, algunos tips que te ayudará bastante cuando desarrolles en JS y te topes con prototypes.</p>
+            <h2 id="hasownproperty">hasOwnProperty</h2>
+            <p>Te ayuda a ver si cierta instancia tiene como propiedad dentro de su  propia declaración y no en el prototype que se le haya pasado.</p>
+            <pre><code class="language-js">Pikachu.hasOwnProperty(name) // True
+Pikachu.hasOwnProperty(caminar) // False</code></pre>
+            <h2 id="objectgetprototypeof">Object.getPrototypeOf</h2>
+            <p>Como puedes adivinar, este te devolverá el prototype con el que fue instanceado cierto objeto. Por ejemplo</p>
+            <pre><code class="language-js">const protoypePikachu = Object.getPrototypeOf(Pikachu)
+// Devolverá un objeto con todos los métodos de pokemones</code></pre>
+            <p>Tan tan! Felicidades acabas de entender lo que es prototype en JS! 🥳🎉</p>
+            <div><img class="gif-2" src="https://media1.giphy.com/media/r7KRrZURnCRqqrlcWy/giphy.gif?cid=ecf05e47nvzqzvvxjp3a8pykk29nj91u1n7lb6s9s4zbrlv9&rid=giphy.gif&ct=g" alt="https://media1.giphy.com/media/r7KRrZURnCRqqrlcWy/giphy.gif?cid=ecf05e47nvzqzvvxjp3a8pykk29nj91u1n7lb6s9s4zbrlv9&amp;rid=giphy.gif&amp;ct=g"></div>
+            <p>Ahora nos toca ver cómo con la llegada de ES6 podemos usar azúcar sintáctica para poder escribir clases como en otros lenguajes, usando un constructor interno y .. </p>
+            <p>Jajaja, solo bromeo, en realidad es un tema muy interesante que me gustaría redactar próximamente. </p>
+            <p>Pero por ahora, déjame quitarme el sombrero pues acabas de dominar el tema 😼🏆</p>
+            <div><img class="gif-2" src="https://media0.giphy.com/media/RPwrO4b46mOdy/giphy.gif?cid=ecf05e47awygx0ef83s4fuje7tpfwf1lplap89sa0niutcxn&rid=giphy.gif&ct=g" alt="https://media0.giphy.com/media/RPwrO4b46mOdy/giphy.gif?cid=ecf05e47awygx0ef83s4fuje7tpfwf1lplap89sa0niutcxn&amp;rid=giphy.gif&amp;ct=g"></div>
+            <p>Gracias en serio por leer este artículo, cualquier corrección o aporte será bienvenido.</p>
+        </div>
+    </div>
+    <script src="../src/prism.js"></script>
+    <script src="https://kit.fontawesome.com/79420c6a46.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
