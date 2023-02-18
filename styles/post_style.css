@@ -13,16 +13,29 @@ html{
     h1: 44px
 */
 
+:root{
+    --white: #FBFBFB;
+    --black: #000;
+    --light-nav-transparent: rgba(250, 250, 250, 0.861);
+    --shadow-light-nav: 0px 51px 52px -32px rgba(0,0,0,0.1);
+    --light-nav-border: #e7e7e7;
+    --light-code-bc: #E5E5E5;
+    --dark-code-bc: #2F2F2F;
+    --dark-body-color: #171717;
+    --dark-nav-border: #303030;
+}
+
+
 h1{
     font-size: 4.4rem;
 }
 
 body{
     font-size: 2rem;
-    background-color: #FBFBFB;
+    background-color: var(--white);
     font-family: "Segoe UI", Arial, sans-serif;
     color: #000000;
-
+    transition: .2s;
 }
 
 a{
@@ -49,12 +62,14 @@ header{
 nav{
     display: flex;
     justify-content: space-between;
-    background-color: rgba(250, 250, 250, 0.861);
+    background-color: var(--light-nav-transparent);
     backdrop-filter: blur(.6rem);
     padding: 20px max(5%,2.4rem);
     width: 100%;
-    box-shadow: 0px 51px 52px -32px rgba(0,0,0,0.1);
-    border-bottom: 1px solid #e7e7e7;
+    box-shadow: var(--shadow-light-nav);
+    border-bottom: 1px solid var(--light-nav-border);
+    transition: .2s;
+
 }
 .social-media{
     display: flex;
@@ -68,7 +83,7 @@ nav{
 
 nav h1{
     line-height: 4rem;
-    color: #000000 !important;
+    color: var(--black);
     font-weight: 500;
     font-size: 1.8rem;
 }
@@ -120,11 +135,108 @@ nav h1{
     margin: 2rem 0;
 }
 p code{
-    background-color: #E5E5E5;
+    background-color: var(--light-code-bc);
     font-family: 'SF Mono';
     font-size: 1.6rem;
     padding: .2rem .6rem;
     border-radius: .3rem;
+}
+
+/* Dark mode CSS */
+/* Button*/
+.toggle{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 10rem;
+    height: 4.5rem;
+    border-radius: 5rem;
+    transition: .2s;
+    margin: 0 1rem;
+}
+
+.toggle i{
+    width: 50%;
+    line-height: 4.5rem;
+    text-align: center;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.toggle .ball{
+    position: absolute;
+    width: 4rem;
+    height:4rem;
+    margin: .25rem .5rem;
+    border-radius: 50%;
+    transition: .3s ease-out;
+}
+
+/* light mode */
+
+.light{
+    background-color: #fafafa;
+}
+.light .toggle{
+    background: linear-gradient(145deg, #e1e1e1, #fff);
+    box-shadow: 3px 3px 4px #e6e6e6
+                -3px -3px 4px #ffffff;
+}
+
+.light .toggle .bxs-sun{
+    color: #fafafa;
+}
+.light .toggle .bx-moon{
+    color: #151d2a;
+}
+
+.light .toggle .ball{
+    background: #151d2a;
+}
+
+input#toggle{
+    display: none;
+}
+
+/* dark mode */
+
+
+.dark{
+    background-color: var(--dark-body-color);
+    color: var(--white);
+}
+
+.dark nav{
+    background-color: var(--dark-body-color);
+    box-shadow: var(--shadow-light-nav);
+    border-bottom: 1px solid var(--dark-nav-border);
+}
+
+.dark a{
+    color: var(--white);
+}
+
+.dark .toggle{
+    background: var(--dark-body-color);
+    box-shadow: 3px 3px 3px #070707,
+                -3px -3px 3px #1a1a1a;
+}
+
+.dark .toggle .bxs-sun{
+    color: #fafafa;
+}
+.dark .toggle .bx-moon{
+    color: var(--dark-body-color);
+}
+
+.dark .toggle .ball{
+    background: #fafafa;
+    transform: translateX(5rem);
+}
+
+.dark p code{
+    background-color: var(--dark-code-bc);
 }
 
 @media (min-width: 768px){
