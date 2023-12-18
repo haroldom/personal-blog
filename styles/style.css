@@ -232,6 +232,10 @@ nav h1{
     color: #151d2a;
 }
 
+body.dark .toggle .bx-moon{
+    color: #151d2a;
+}
+
 .light .toggle .ball{
     background: #151d2a;
 }
@@ -275,7 +279,7 @@ input#toggle{
 .dark .toggle .bxs-sun{
     color: #fafafa;
 }
-.dark .toggle .bx-moon{
+.dark .toggle .bxs-moon{
     color: var(--dark-body-color);
 }
 
